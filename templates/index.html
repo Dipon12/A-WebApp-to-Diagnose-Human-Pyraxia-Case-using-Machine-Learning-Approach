@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Fever Diagnosis</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+
+ <div class="login">
+	<h1>Fever Diagnosis</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+      <label for="Age of Patient">Age Range</label>
+      <select name="Age of Patient" id="Age of Patient">
+        <option></option>
+        <option value=1><10</option>
+        <option value=2>11-20</option>
+        <option value=3>21-30</option>
+        <option value=4>31-40</option>
+        <option value=5>41-50</option>
+        <option value=6>50+</option>
+      </select>
+
+
+      <label for="Gender">Gender</label>
+      <select name="Gender" id="Gender">
+        <option></option>
+        <option value=1>Male</option>
+        <option value=2>Female</option>
+      </select>
+
+
+      <label for="Patient Had Diabetes?">Diabetes?</label>
+      <select name="Patient Had Diabetes?" id="Patient Had Diabetes?">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+      </select>
+
+
+      <label for="Condition of Blood Pressure">Blood Pressure</label>
+      <select name="Condition of Blood Pressure" id="Condition of Blood Pressure">
+        <option></option>
+        <option value=1>Low Blood Pressure</option>
+        <option value=2>Normal</option>
+        <option value=3>High Blood Pressure</option>
+      </select>
+
+
+      <label for="Fever Type.1">Fever Level</label>
+      <select name="Fever Type.1" id="Fever Type.1">
+        <option></option>
+        <option value=1>Low</option>
+        <option value=2>Medium</option>
+        <option value=3>High</option>
+      </select>
+
+
+      <label for="Headache">Headache</label>
+      <select name="Headache" id="Headache">
+        <option></option>
+        <option value=1>No Headache</option>
+        <option value=2>Medium</option>
+        <option value=3>High</option>
+      </select>
+
+
+      <label for="Joint Pain">Joint Pain</label>
+      <select name="Joint Pain" id="Joint Pain">
+        <option></option>
+        <option value=1>No Pain</option>
+        <option value=2>Medium</option>
+        <option value=3>High</option>
+      </select>
+
+
+      <label for="Muscle Pain">Muscle Pain</label>
+      <select name="Muscle Pain" id="Muscle Pain">
+        <option></option>
+        <option value=1>No Pain</option>
+        <option value=2>Medium</option>
+        <option value=3>High</option>
+      </select>
+
+
+      <label for="Diarrhea">Diarrhea</label>
+      <select name="Diarrhea" id="Diarrhea">
+        <option></option>
+        <option value=1>No Diarrhea</option>
+        <option value=2>Medium</option>
+        <option value=3>High</option>
+      </select>
+
+
+      <label for="Fatigue">Fatigue</label>
+      <select name="Fatigue" id="Fatigue">
+        <option></option>
+        <option value=1>No Fatigue</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+      <label for="Nausea">Nausea</label>
+      <select name="Nausea" id="Nausea">
+        <option></option>
+        <option value=1>No Nausea</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+      <label for="Vomiting">Vomiting</label>
+      <select name="Vomiting" id="Vomiting">
+        <option></option>
+        <option value=1>No Vomiting</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+      <label for="Abdominal Pain">Abdominal Pain</label>
+      <select name="Abdominal Pain" id="Abdominal Pain">
+        <option></option>
+        <option value=1>No Pain</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+      <label for="Skin Rash">Skin Rash</label>
+      <select name="Skin Rash" id="Skin Rash">
+        <option></option>
+        <option value=1>No Rash</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+      <label for="Skin Rash">Skin Rash</label>
+      <select name="Skin Rash" id="Skin Rash">
+        <option></option>
+        <option value=1>No Rash</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+
+      <label for="Stuffy/Runny Nose">Stuffy/Runny Nose</label>
+      <select name="Stuffy/Runny Nose" id="Stuffy/Runny Nose">
+        <option></option>
+        <option value=1>No Runny Nose</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+      <label for="Cough">Cough</label>
+      <select name="Cough" id="Cough">
+        <option></option>
+        <option value=1>No Cough</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+
+      <label for="Sweating">Sweating</label>
+      <select name="Sweating" id="Sweating">
+        <option></option>
+        <option value=1>Default</option>
+        <option value=2>Low</option>
+        <option value=3>Medium</option>
+        <option value=4>High</option>
+      </select>
+
+
+      <label for="Constipation">Constipation</label>
+      <select name="Constipation" id="Constipation">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+      <label for="Dizziness">Dizziness</label>
+      <select name="Dizziness" id="Dizziness">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Sore Throat">Sore Throat</label>
+      <select name="Sore Throat" id="Sore Throat">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Chest Congestion">Chest Congestion</label>
+      <select name="Chest Congestion" id="Chest Congestion">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Sensitivity to Light">Sensitivity to Light</label>
+      <select name="Sensitivity to Light" id="Sensitivity to Light">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Insomnia">Insomnia</label>
+      <select name="Insomnia" id="Insomnia">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Pain in the Eyes">Pain in the Eyes</label>
+      <select name="Pain in the Eyes" id="Pain in the Eyes">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Poor Appetite">Poor Appetite</label>
+      <select name="Poor Appetite" id="Poor Appetite">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Convulsions">Convulsions</label>
+      <select name="Convulsions" id="Convulsions">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+      <label for="Back Pain">Back Pain</label>
+      <select name="Back Pain" id="Back Pain">
+        <option></option>
+        <option value=1>Yes</option>
+        <option value=2>No</option>
+        <option value=3>N/A</option>
+      </select>
+
+
+
+      <label for="Fever Characteristics">Fever Characteristics</label>
+      <select name="Fever Characteristics" id="Fever Characteristics">
+        <option></option>
+        <option value=1>Continuous without Chills</option>
+        <option value=2>Including Interval without Chills</option>
+        <option value=6>Continuous with Shaking Chills</option>
+        <option value=7>Continuous with High Chills</option>
+        <option value=8></option>Interval with Shaking Chills</option>
+        <option value=9>Interval with High Chills</option>
+      </select>
+
+
+      
+
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
