@@ -12,9 +12,9 @@
 </head>
 
 <body>
-
+  <div class="head"><h1>Fever Diagnosis</h1></div>
  <div class="login">
-	<h1>Fever Diagnosis</h1>
+	
 
      <!-- Main Input For Receiving Query to our ML -->
 
@@ -314,7 +314,8 @@
       </div>
 
 
-
+        <br>
+        <br>
 
       <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
@@ -323,9 +324,14 @@
 
    <br>
    <br>
-   {{ prediction_text }}
+   <br>
+   <br>
 
- </div>
+  </div>
+  
+   <div id="rslt">{{ prediction_text }}</div>
+
+ 
 
 
 </body>
