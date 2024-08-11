@@ -72,7 +72,6 @@ python app.py
 
 2. Access the Diagnostic Tool:
 - Navigate to `http://127.0.0.1:5000/` in your web browser to interact with the fever diagnosis tool. The application accepts user inputs via a web form and returns a diagnostic prediction based on the trained model.
-## Result
 
 ## Files
 - `Fever Classifier.ipynb`: Contains the full implementation of the machine learning model, including data processing, model training, and evaluation.
